@@ -24,13 +24,12 @@ def generate_mock_transactions(num_records=1000):
     # Crear directorio local si no existe
     os.makedirs("sample_data/bronze", exist_ok=True)
 
-    # Guardar como Parquet
-    output_path = "sample_data/bronze/transactions_sample.parquet"
-    df.to_parquet(output_path, index=False)
+# Guardar como JSON
+    output_path = "sample_data/bronze/transactions_sample.json"
+    df.to_json(output_path, orient="records", lines=True)
     print(
         f"✅ Exitosamente generados {num_records} registros de prueba en: {output_path}"
     )
-
 
 if __name__ == "__main__":
     generate_mock_transactions()
